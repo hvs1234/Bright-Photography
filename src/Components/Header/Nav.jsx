@@ -1,18 +1,20 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useRef, useState } from "react";
 import NavLink from "../../Services/Data/NavData";
 import { Link } from "react-router-dom";
 import { HiMenuAlt1 } from "react-icons/hi";
+import logo from "/logo.png";
+import ViewBtn from "../Btns/ViewBtn";
 
 const Nav = () => {
   const [navlink] = useState(NavLink);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [view, setView] = useState("Home");
   const sidebarRef = useRef(null);
-  const [scrollingUp, setScrollingUp] = useState(false);
-  const prevScrollY = useRef(0);
   const [isDropdownOpen, setIsDropdownOpen] = useState(null);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(null);
   const dropdownRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const handleNavigation = () => {
@@ -25,17 +27,6 @@ const Nav = () => {
   const handleSelectedView = (selectedView) => {
     setView(selectedView);
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollingUp(currentScrollY < prevScrollY.current);
-      prevScrollY.current = currentScrollY;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -52,103 +43,137 @@ const Nav = () => {
       }
     };
 
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [isMenuOpen]);
 
   return (
     <>
       <div
-        className={`header fixed top-0 left-0 z-[999] px-[2rem] py-[2rem] shadow-sm flex justify-center 
+        className={`header fixed top-0 left-0 z-[999] px-[2rem] py-[2rem] max flex justify-center 
         items-center gap-[4rem] w-[100%] max-lg:justify-end`}
         ref={sidebarRef}
       >
         <div
-          className={`absolute top-0 left-0 w-full h-full bg-[white] transition-all duration-[0.4s] ease-linear ${
-            scrollingUp ? "opacity-[0.5]" : "opacity-[1]"
+          className={`absolute top-0 left-0 w-full h-full transition-all duration-[0.4s] ease-linear ${
+            scrolled ? "opacity-[1] bg-white" : "opacity-[0.2] bg-black"
           }`}
-        ></div>
-        <nav className="relative navbar w-[auto] hidden lg:flex">
-          <ul className="flex items-start gap-[4rem] transition-all duration-[0.2s] ease-in-out">
-            {navlink.map((e) => {
-              if (e.submenu) {
-                return (
-                  <div
-                    key={e.id}
-                    className="relative cursor-pointer"
-                    onMouseEnter={() => setIsDropdownOpen(e.id)}
-                    onMouseLeave={() => setIsDropdownOpen(null)}
-                  >
-                    <span
-                      className={`navlink border-b-[1px] pb-[0.5rem] border-none ${e.class}`}
-                    >
-                      {e.title} &nbsp;
-                      <i className="fa-solid fa-chevron-down text-[1.4rem] relative bottom-[0.2rem]"></i>
-                    </span>
-                    {isDropdownOpen === e.id && (
+        />
+
+        <div className="flex justify-center max-lg:justify-end gap-[6rem] w-full items-center">
+          <div className="flex items-center justify-end gap-[4rem] max-lg:gap-[2rem]">
+            <nav className="relative navbar w-[auto] hidden lg:flex">
+              <ul className="flex items-start gap-[4rem] transition-all duration-[0.2s] ease-in-out">
+                {navlink.map((e) => {
+                  if (e.submenu) {
+                    return (
                       <div
-                        ref={dropdownRef}
-                        className="absolute left-[-6rem] mt-[0.2rem] px-[2rem] py-[2rem] border-[1px] border-[#d2d2d2] w-[300px] 
-                        bg-white shadow-lg rounded-lg z-50 flex flex-col gap-[1rem]"
+                        key={e.id}
+                        className="relative cursor-pointer"
+                        onMouseEnter={() => setIsDropdownOpen(e.id)}
+                        onMouseLeave={() => setIsDropdownOpen(null)}
                       >
-                        {e.submenu.map((sub) => (
-                          <Link
-                            key={sub.id}
-                            to={sub.to}
-                            className="block text-[2rem] hover:text-[darkblue] text-black transition"
-                            onClick={handleNavigation}
+                        <span
+                          className={`navlink border-b-[1px] pb-[0.5rem] border-none ${e.class}`}
+                        >
+                          {e.title} &nbsp;
+                          <i className="fa-solid fa-chevron-down text-[1.4rem] relative bottom-[0.2rem]"></i>
+                        </span>
+                        {isDropdownOpen === e.id && (
+                          <div
+                            ref={dropdownRef}
+                            className="absolute left-[-6rem] mt-[0.2rem] px-[2rem] py-[2rem] border-[1px] border-[#d2d2d2] 
+                            w-[300px] bg-white shadow-lg rounded-lg z-50 flex flex-col gap-[1rem]"
                           >
-                            {sub.title}
-                          </Link>
-                        ))}
+                            {e.submenu.map((sub) => (
+                              <Link
+                                key={sub.id}
+                                to={sub.to}
+                                className="block text-[2rem] hover:text-[darkblue] text-black transition"
+                                onClick={handleNavigation}
+                              >
+                                {sub.title}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                );
-              } else {
-                return (
-                  <Link
-                    key={e.id}
-                    to={e.to}
-                    onClick={() => {
-                      handleNavigation();
-                      handleSelectedView(e.title);
-                    }}
-                    className={`navlink ${
-                      view === e.title
-                        ? "border-b-[1px] pb-[0.5rem] border-[#212121]"
-                        : "border-none"
-                    } ${e.class}`}
-                  >
-                    {e.title}
-                  </Link>
-                );
-              }
-            })}
-          </ul>
-        </nav>
-        <div className="relative flex items-center justify-center gap-[2rem]">
-          <a
-            href="#"
-            target="_blank"
-            className="fa-brands fa-facebook text-[#424262] text-[2.8rem] hover:opacity-[0.5] transition-all duration-[0.2s] ease-in-out"
-          ></a>
-          <a
-            href="#"
-            target="_blank"
-            className="fa-brands fa-linkedin text-[#424262] text-[2.8rem] hover:opacity-[0.5] transition-all duration-[0.2s] ease-in-out"
-          ></a>
-          <a
-            href="#"
-            target="_blank"
-            className="fa-brands fa-instagram text-[#424262] text-[2.8rem] hover:opacity-[0.5] transition-all duration-[0.2s] ease-in-out"
-          ></a>
-          <div className="lg:hidden">
-            <HiMenuAlt1
-              size={20}
-              className="text-[#212121] cursor-pointer"
-              onClick={toggleMenu}
-            />
+                    );
+                  } else {
+                    return (
+                      <Link
+                        key={e.id}
+                        to={e.to}
+                        onClick={() => {
+                          handleNavigation();
+                          handleSelectedView(e.title);
+                        }}
+                        className={`navlink ${
+                          view === e.title
+                            ? `border-b-[1px] pb-[0.5rem] border-[#ff3d64] text-[#ff3d64]`
+                            : `border-none ${
+                                scrolled ? "text-black" : "text-white"
+                              }`
+                        } ${e.class} hover:opacity-[0.6]`}
+                      >
+                        {e.title}
+                      </Link>
+                    );
+                  }
+                })}
+              </ul>
+            </nav>
+            <div className="relative flex items-center justify-center gap-[2rem]">
+              <a
+                href="#"
+                target="_blank"
+                className={`fa-brands fa-facebook ${
+                  scrolled ? "text-[#b11f3c]" : "text-[#f2f2f2]"
+                } text-[2.2rem] hover:opacity-[0.5] transition-all duration-[0.2s] ease-in-out`}
+              ></a>
+              <a
+                href="#"
+                target="_blank"
+                className={`fa-brands fa-linkedin ${
+                  scrolled ? "text-[#b11f3c]" : "text-[#f2f2f2]"
+                } text-[2.2rem] hover:opacity-[0.5] transition-all duration-[0.2s] ease-in-out`}
+              ></a>
+              <a
+                href="#"
+                target="_blank"
+                className={`fa-brands fa-instagram ${
+                  scrolled ? "text-[#b11f3c]" : "text-[#f2f2f2]"
+                } text-[2.2rem] hover:opacity-[0.5] transition-all duration-[0.2s] ease-in-out`}
+              ></a>
+              <div className="lg:hidden">
+                <HiMenuAlt1
+                  size={20}
+                  className={`${
+                    scrolled ? "text-[#212121]" : "text-[wheat]"
+                  } cursor-pointer`}
+                  onClick={toggleMenu}
+                />
+              </div>
+            </div>
+            <div className="relative flex w-auto items-center justify-center max-lg:hidden">
+              <ViewBtn
+                btnTitle={"Get in Touch"}
+                btnFunc={"/"}
+                btnClass={"navBtn"}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -160,7 +185,7 @@ const Nav = () => {
         } fixed top-0 right-0 w-full h-screen bg-[white] transition-transform duration-[0.3s] ease-in-out 
         lg:hidden z-[999]`}
       >
-        <div className="flex justify-end p-[1rem]">
+        <div className="flex justify-end items-center gap-[1rem] p-[1rem]">
           <HiMenuAlt1
             size={20}
             className="text-[#212121] cursor-pointer"
@@ -220,6 +245,9 @@ const Nav = () => {
               );
             }
           })}
+          <div className="relative max-lg:flex w-auto items-center justify-center hidden">
+            <ViewBtn btnTitle={"Get in Touch"} btnFunc={"/"} />
+          </div>
         </ul>
       </div>
     </>
