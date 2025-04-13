@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import NavLink from "../../Services/Data/NavData";
 import { Link } from "react-router-dom";
 import { HiMenuAlt1 } from "react-icons/hi";
-import logo from "/logo.png";
+import logo1 from "/logo1.png";
+import logo2 from "/logo2.png";
 import ViewBtn from "../Btns/ViewBtn";
 
 const Nav = () => {
@@ -62,7 +63,7 @@ const Nav = () => {
   return (
     <>
       <div
-        className={`header fixed top-0 left-0 z-[999] px-[2rem] py-[2rem] max flex justify-center 
+        className={`header fixed top-0 left-0 z-[999] px-[2rem] py-[0.2rem] max-lg:py-[1rem] max flex justify-center 
         items-center gap-[4rem] w-[100%] max-lg:justify-end`}
         ref={sidebarRef}
       >
@@ -72,9 +73,20 @@ const Nav = () => {
           }`}
         />
 
-        <div className="flex justify-center max-lg:justify-end gap-[6rem] w-full items-center">
+        <div className="relative flex justify-center max-xl:justify-between gap-[6rem] w-full items-center">
+          <Link
+            to={"/"}
+            onClick={handleNavigation}
+            className="relative flex justify-start items-center w-auto h-auto"
+          >
+            <img
+              src={scrolled ? logo1 : logo2}
+              alt="logo"
+              className="w-full max-sm:w-[50%] h-full object-cover"
+            />
+          </Link>
           <div className="flex items-center justify-end gap-[4rem] max-lg:gap-[2rem]">
-            <nav className="relative navbar w-[auto] hidden lg:flex">
+            <nav className="relative navbar w-[auto] hidden xl:flex">
               <ul className="flex items-start gap-[4rem] transition-all duration-[0.2s] ease-in-out">
                 {navlink.map((e) => {
                   if (e.submenu) {
@@ -157,7 +169,7 @@ const Nav = () => {
                   scrolled ? "text-[#b11f3c]" : "text-[#f2f2f2]"
                 } text-[2.2rem] hover:opacity-[0.5] transition-all duration-[0.2s] ease-in-out`}
               ></a>
-              <div className="lg:hidden">
+              <div className="xl:hidden">
                 <HiMenuAlt1
                   size={20}
                   className={`${
@@ -167,7 +179,7 @@ const Nav = () => {
                 />
               </div>
             </div>
-            <div className="relative flex w-auto items-center justify-center max-lg:hidden">
+            <div className="relative flex w-auto items-center justify-center max-xl:hidden">
               <ViewBtn
                 btnTitle={"Get in Touch"}
                 btnFunc={"/"}
@@ -183,14 +195,27 @@ const Nav = () => {
         className={`${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         } fixed top-0 right-0 w-full h-screen bg-[white] transition-transform duration-[0.3s] ease-in-out 
-        lg:hidden z-[999]`}
+        xl:hidden z-[999]`}
       >
-        <div className="flex justify-end items-center gap-[1rem] p-[1rem]">
-          <HiMenuAlt1
-            size={20}
-            className="text-[#212121] cursor-pointer"
-            onClick={toggleMenu}
-          />
+        <div className="flex justify-between w-full items-center gap-[1rem] p-[1rem]">
+          <Link
+            to={"/"}
+            onClick={handleNavigation}
+            className="relative flex justify-start items-start w-auto h-auto"
+          >
+            <img
+              src={logo1}
+              alt="logo"
+              className="w-full max-sm:w-[50%] h-full object-cover"
+            />
+          </Link>
+          <div className="flex justify-end items-center gap-[1rem]">
+            <HiMenuAlt1
+              size={20}
+              className="text-[#212121] cursor-pointer"
+              onClick={toggleMenu}
+            />
+          </div>
         </div>
         <ul
           className={`flex flex-col justify-center items-center text-center h-full px-[6rem] py-[0rem] gap-[3rem] text-[black]`}
@@ -245,8 +270,8 @@ const Nav = () => {
               );
             }
           })}
-          <div className="relative max-lg:flex w-auto items-center justify-center hidden">
-            <ViewBtn btnTitle={"Get in Touch"} btnFunc={"/"} />
+          <div className="relative max-xl:flex w-auto items-center justify-center hidden">
+            <ViewBtn btnTitle={"Get In Touch"} btnFunc={"/"} />
           </div>
         </ul>
       </div>

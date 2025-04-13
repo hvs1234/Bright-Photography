@@ -2,14 +2,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ViewBtn from "../Btns/ViewBtn";
+import logo1 from "/logo1.png";
 
 const Footer = () => {
+  const handleNavigation = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <>
       <div className="relative px-[20rem] py-[6rem] w-full bg-[#f2f2f2] transition-all duration-[0.4s] ease-in-out max-xl:px-[5rem] max-md:px-[2rem]">
         <div className="flex justify-center items-start w-full gap-[10rem] max-sm:flex-col max-sm:items-center max-sm:gap-[4rem]">
-          <div className="flex flex-col gap-[2rem] max-sm:items-center max-sm:justify-center max-sm:text-center">
-            <div className="relative flex items-center justify-center gap-[2rem] mt-[1rem] max-sm:mt-0 max-sm:items-center max-sm:text-center">
+          <div className="flex flex-col gap-[2rem] items-center justify-center text-center">
+            <Link
+              to={"/"}
+              onClick={handleNavigation}
+              className="relative flex justify-center items-center w-auto h-auto"
+            >
+              <img
+                src={logo1}
+                alt="logo"
+                className="w-full max-sm:w-[50%] h-full object-cover"
+              />
+            </Link>
+            <div className="relative flex items-center justify-center gap-[2rem] max-sm:items-center max-sm:text-center">
               <a
                 href="#"
                 target="_blank"

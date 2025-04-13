@@ -8,7 +8,8 @@ const ViewBtn = ({ btnTitle, btnFunc, btnClass }) => {
     <>
       <Link
         to={btnFunc}
-        className={`w-full px-[2rem] ${
+        onClick={btnFunc}
+        className={`w-auto px-[2rem] ${
           btnClass === "navBtn" ? "py-[0.5rem]" : "py-[1rem]"
         } rounded-xl bg-[crimson] text-[white] text-[2rem] font-normal transition-all duration-[0.2s] ease-in-out cursor-pointer hover:opacity-[0.8]`}
       >

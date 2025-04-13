@@ -23,7 +23,7 @@ const Hero = () => {
         {homecarouseldata.map((e) => {
           return (
             <SwiperSlide key={e.id}>
-              <div
+              <section
                 className="pt-[5rem] px-[20rem] w-full h-full relative object-cover bg-no-repeat bg-center bg-cover max-xl:px-[5rem] max-md:px-[2rem]"
                 style={{ backgroundImage: `url(${e.bannerImg})` }}
               >
@@ -39,7 +39,7 @@ const Hero = () => {
                     <BannerBtn btnTitle={"Visit More"} />
                   </div>
                 </div>
-              </div>
+              </section>
             </SwiperSlide>
           );
         })}

@@ -22,6 +22,30 @@
   font-weight: 500;
 }
 
+.font-lato {
+  font-family: 'Lato', sans-serif;
+}
+
+.font-noto {
+  font-family: 'Noto Serif', serif;
+  font-weight: 600;
+}
+
+.font-lobster {
+  font-family: 'Lobster', cursive;
+  font-weight: 500;
+}
+
+.font-oleo {
+  font-family: "Oleo Script", system-ui;
+  font-weight: 800;
+}
+
+.font-cinzel {
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+}
+
 html {
   font-size: 62.5%;
   overflow-x: hidden;
