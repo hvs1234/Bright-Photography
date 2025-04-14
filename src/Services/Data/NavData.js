@@ -6,13 +6,13 @@ const NavLink = [
     class:
       "text-[2rem] max-md:text-[2rem] font-normal hover:scale-[1.1] transition-all duration-[0.2s] navlink tracking-[0]",
   },
-  {
-    id: 2,
-    title: "About Us",
-    to: "/",
-    class:
-      "text-[2rem] max-md:text-[2rem] font-normal hover:scale-[1.1] transition-all duration-[0.2s] navlink tracking-[0]",
-  },
+  // {
+  //   id: 2,
+  //   title: "About Us",
+  //   to: "/",
+  //   class:
+  //     "text-[2rem] max-md:text-[2rem] font-normal hover:scale-[1.1] transition-all duration-[0.2s] navlink tracking-[0]",
+  // },
   {
     id: 3,
     title: "Photography",
@@ -30,7 +30,7 @@ const NavLink = [
   {
     id: 5,
     title: "Editorial",
-    to: "/",
+    to: "/editorial",
     class:
       "text-[2rem] max-md:text-[2rem] font-normal hover:scale-[1.1] transition-all duration-[0.2s] navlink tracking-[0]",
   },

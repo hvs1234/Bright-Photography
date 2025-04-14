@@ -5,6 +5,7 @@ import Nav from "./Components/Header/Nav";
 import Home from "./Pages/Home/Home";
 import Footer from "./Components/Footer/Footer";
 import ScrollTopBtn from "./Components/Btns/ScrollTopBtn";
+import Editorial from "./Pages/Editorial/Editorial";
 
 const App = () => {
   return (
@@ -12,7 +13,10 @@ const App = () => {
       <BrowserRouter>
         <Nav />
         <div className="relative">
-          <Home />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/editorial" element={<Editorial />} />
+          </Routes>
         </div>
         <ScrollTopBtn />
         <Footer />

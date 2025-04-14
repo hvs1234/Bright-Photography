@@ -33,8 +33,18 @@ const HomeParallex = () => {
 
   return (
     <>
-      <section className="py-[6rem] px-[20rem] w-full h-[50vh] relative object-cover bg-[url('/Media/parallex2.jpg')] not-visited:bg-no-repeat bg-center bg-cover bg-fixed max-xl:px-[5rem] max-md:px-[2rem] object-cover">
-        <div className="absolute top-0 left-0 w-full h-full bg-[#23230b] opacity-[0.5]"></div>
+      <section className="py-[6rem] px-[20rem] w-full h-[70vh] relative object-cover bg-[url('/Media/parallex2.jpg')] not-visited:bg-no-repeat bg-center bg-cover bg-fixed max-xl:px-[5rem] max-md:px-[2rem] object-cover">
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/Media/video1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div className="absolute top-0 left-0 w-full h-full bg-[#23230b] opacity-[0.6]"></div>
         <div className="relative w-full h-full flex flex-col gap-[1rem] justify-center items-center text-center">
           <h2 className="text-[4rem] max-md:text-[3rem] font-cinzel text-white">
             Soul + Cinema
@@ -60,7 +70,7 @@ const HomeParallex = () => {
           <LineDesign />
         </div>
         <div className="grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 gap-[2rem] w-full justify-center rounded-xl mt-[4rem]">
-          <ImageCard ImgCardData={HomeStoryImgData.slice(0, visibleCount)} />
+          <ImageCard ImgCardData={HomeStoryImgData.slice(0, visibleCount)} ImgClass={"h-full"}/>
         </div>
         <div className="flex justify-center items-center w-auto mt-[4rem]">
           <ViewBtn

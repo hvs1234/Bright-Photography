@@ -26,7 +26,7 @@ const HomeMain = () => {
         </div>
         <div className="px-[2rem] w-full mt-[4rem]">
           <div className="flex gap-[1rem] shrink-0 grow-0 w-full overflow-x-auto no-scrollbar rounded-xl">
-            <ImageCard ImgCardData={sliderImg} />
+            <ImageCard ImgCardData={sliderImg} ImgClass={"h-full"}/>
           </div>
           <p className="text-[2rem] font-normal text-[crimson] text-center mt-[4rem] rounded-xl">
             Scroll left to right here &nbsp;
