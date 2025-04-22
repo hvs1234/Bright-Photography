@@ -182,7 +182,7 @@ const Nav = () => {
             <div className="relative flex w-auto items-center justify-center max-xl:hidden">
               <ViewBtn
                 btnTitle={"Get in Touch"}
-                btnFunc={"/"}
+                btnFunc={"/contactus"}
                 btnClass={"navBtn"}
               />
             </div>
@@ -271,7 +271,7 @@ const Nav = () => {
             }
           })}
           <div className="relative max-xl:flex w-auto items-center justify-center hidden">
-            <ViewBtn btnTitle={"Get In Touch"} btnFunc={"/"} />
+            <ViewBtn btnTitle={"Get In Touch"} btnFunc={"/contactus"} />
           </div>
         </ul>
       </div>
