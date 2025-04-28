@@ -1,0 +1,58 @@
+export const FilmCardData = [
+  {
+    id: 1,
+    topDesc: `Classic Story Telling - 04/04/2025`,
+    mainHeading: `Varun and Lanvanya, Italy`,
+    img: `/Media/Gallery/1.jpg`,
+    desc: `A breathtaking celebration in the heart of Italy where Varun and Lanvanya's love story unfolded under the Tuscan sun. Their ceremony was a perfect blend of tradition and modern romance, surrounded by rolling vineyards and timeless architecture.`,
+  },
+  {
+    id: 2,
+    topDesc: `Romantic Elegance - 06/04/2025`,
+    mainHeading: `Aarav and Meera, Santorini`,
+    img: `/Media/Gallery/2.jpg`,
+    desc: `Aarav and Meera chose the stunning blue and white cliffs of Santorini to say their vows. Their wedding captured the magic of the Aegean Sea, with heartfelt moments, radiant sunsets, and a gathering of close friends and family in an unforgettable setting.`,
+  },
+  {
+    id: 3,
+    topDesc: `Whispers of Love - 08/04/2025`,
+    mainHeading: `Rohan and Priya, Paris`,
+    img: `/Media/Gallery/3.jpg`,
+    desc: `In the city of love, Rohan and Priya shared a day filled with laughter, tender glances, and timeless beauty. From the grand architecture to intimate street corners, every moment was a piece of a fairytale they will cherish forever.`,
+  },
+  {
+    id: 4,
+    topDesc: `Sunset Promises - 10/04/2025`,
+    mainHeading: `Kabir and Ananya, Bali`,
+    img: `/Media/Gallery/4.jpg`,
+    desc: `Kabir and Ananya’s beachside wedding in Bali was a dream wrapped in golden sunlight and ocean breezes. The soothing sounds of waves set the tone for a heartfelt ceremony, where every smile, tear, and embrace spoke of endless devotion.`,
+  },
+  {
+    id: 5,
+    topDesc: `Golden Memories - 12/04/2025`,
+    mainHeading: `Dev and Isha, Udaipur`,
+    img: `/Media/Gallery/5.jpg`,
+    desc: `Dev and Isha celebrated their royal union in the palatial grandeur of Udaipur. With majestic lakes and heritage palaces as their backdrop, their wedding was a symphony of culture, colors, and everlasting romance woven into every ritual and moment.`,
+  },
+  {
+    id: 6,
+    topDesc: `Eternal Romance - 14/04/2025`,
+    mainHeading: `Aryan and Saanvi, Amalfi Coast`,
+    img: `/Media/Gallery/6.jpg`,
+    desc: `Aryan and Saanvi’s wedding along the Amalfi Coast was a poetic blend of nature and elegance. Their vows were exchanged against dramatic cliffs and shimmering seas, creating memories etched forever in their hearts and captured in breathtaking frames.`,
+  },
+  {
+    id: 7,
+    topDesc: `Sacred Vows - 16/04/2025`,
+    mainHeading: `Siddharth and Naina, Jaipur`,
+    img: `/Media/Gallery/7.jpg`,
+    desc: `Amidst the historic forts and vibrant colors of Jaipur, Siddharth and Naina embarked on their journey together. Their wedding was a regal celebration of age-old traditions, surrounded by grandeur and endless love resonating through every ritual.`,
+  },
+  {
+    id: 8,
+    topDesc: `Blissful Beginnings - 18/04/2025`,
+    mainHeading: `Aditya and Tara, Maldives`,
+    img: `/Media/Gallery/8.jpg`,
+    desc: `On a private island in the Maldives, Aditya and Tara’s wedding was an intimate affair marked by pristine beaches, turquoise waters, and pure joy. Each moment reflected their deep connection and the serene beauty of starting a lifetime together.`,
+  },
+];
